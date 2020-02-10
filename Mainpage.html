@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Chooze Your Tunez</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="styles/custom.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="themes/CourseProjectTheme.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.5.min.js"></script>
+  </head>
+
+  <body>
+    <div id="page" data-role="page" data-theme="c" data-add-back-btn="true">
+
+      <div data-role="panel" id="myPanel" data-theme="c">
+    		<h2>Navigation</h2>
+    		<ul data-role="listview" data-theme="b">
+    			<li class="menu"><a href="http://sotd.us/alejandraledesma-peters/MobileApplicationDevelopment/Songspage.html">Song's Page</a></li>
+    			<li class="menu"><a href="http://sotd.us/alejandraledesma-peters/MobileApplicationDevelopment/Albumspage.html">Artist's Page</a></li>
+    			<li class="menu"><a href="http://sotd.us/alejandraledesma-peters/MobileApplicationDevelopment/Artistspage.html">Album's Page</a></li>
+    		</ul>
+        <br>
+    		<p>You can close this panel by clicking outside of it, pressing the Esc key, or by swiping.</p>
+    	</div>
+
+
+      <div data-role="header" data-theme="a">
+        <div class="logo"><img src="http://static1.squarespace.com/static/556e5e1de4b040bf8bd50700/5581538de4b032e0bb307b29/55e06b24e4b0fdcdad543d65/1441494124474/?format=1500w" width="125" height="100" alt=""/> Chooze Your Tunze
+        </div>
+      </div>
+
+      <div data-role="header" data-theme="a">
+        <h1>Main Page</h1>
+    		<a href="#myPanel" class="ui-btn ui-btn-inline">Open Menu</a>
+      </div>
+
+      <div data-role="content">
+          <table>
+            <td>
+              <th style="width:50%; border:1px dot #000; padding: 15px; background-image: url(https://previews.123rf.com/images/pavalena/pavalena1302/pavalena130200005/17791095-abstract-light-musical-vector-background.jpg);">
+                <p style="text-align: left;">Welcome to Chooze Your Tunze, a fun website that allows you to showcase your favorite songs, albums, andf artists.
+                  This website has different pages for you to showcase more of your favorite music, but in a well organized list.
+                  In addition to the list, the site will also add a feature which shows fun facts about each top rated item in the list, including: a biography or the artist/group, the release date, and a photo.
+                </p>
+              </th>
+            </td>
+            <td>
+              <th style="width:50%;">
+                <ul data-role="listview" data-theme="b">
+                  <li><a href="#topsong"><u>Top Rated Song: </u><br>Achilles Last Stand</a></li>
+                    <br>
+                  <li><a href="#topalbum"><u>Top Rated Album: </u><br>Metallica</a></li>
+                    <br>
+                  <li><a href="#topartist"><u>Top Rated Artist: </u><br>Eminem</a></li>
+                </ul>
+              </th>
+            </td>
+          </table>
+      </div>
+
+			<div data-role="footer" data-theme="a">
+				<h4>Chooze Your Tunze &copy; 2020</h4>
+			</div>
+		</div>
+
+      <div id="topsong" data-role="page" data-theme="c" data-add-back-btn="true">
+        <div data-role="header" data-theme="a" data-add-back-btn="true">
+          <h1>Top Rated Song!</h1>
+        </div>
+        <div data-role="content">
+            <center>
+          <h3>Achilles Last Stand</h3>
+          <p><img src="http://pm1.narvii.com/6893/bc39e60217e6a56344be5a2929523b33c282a94dr1-544-542v2_00.jpg" width="475" height="400" alt="" /></p>
+            </center>
+          <p style="text-indent: 50px">Achilles Last Stand was created in 1976, which was released in their opening track on their seventh studio album. The song itself was inspired by not only not being able to return to the UK, but also from local music heard in Morocco during the summer of 1975. One the sing was composed, it joined the rankes as one of their longest songs. The song itself was approximatly ten minutes and 22 seconds.</p>
+        </div>
+        <div data-role="footer" data-theme="a">
+          <h4>Chooze Your Tunez &copy; 2020</h4>
+        </div>
+      </div>
+
+			<div id="topalbum" data-role="page" data-theme="c" data-add-back-btn="true">
+				<div data-role="header" data-theme="a" data-add-back-btn="true">
+					<h1>Top Rated Album!</h1>
+				</div>
+				<div data-role="content">
+            <center>
+          <h3>Metallica</h3>
+          <p><img src="https://i.ytimg.com/vi/g0xzQVCDR-4/maxresdefault.jpg" width="475" height="400" alt="" /></p>
+            </center>
+          <p style="text-indent: 50px">Metallica the album was released on August 12, 1991, through Elektra Records. The album is also known as the Black Alubm has 5 singles, released from 1991 to 1993. This album was their best selling album worldwide, selling over 31 million certified units, and earning several platinum records.</p>
+				</div>
+				<div data-role="footer" data-theme="a">
+					<h4>Chooze Your Tunez &copy; 2020</h4>
+				</div>
+			</div>
+
+      <div id="topartist" data-role="page" data-theme="c" data-add-back-btn="true">
+				<div data-role="header" data-theme="a" data-add-back-btn="true">
+					<h1>Top Rated Artist!</h1>
+				</div>
+				<div data-role="content">
+            <center>
+          <h3>Eminem</h3>
+          <p><img src="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2020%2F01%2Feminem-world-record-godzilla-verse-juice-wrld-229-words-30-seconds-01.jpg?q=75&w=800&cbr=1&fit=max" width="475" height="400" alt="" /></p>
+            </center>
+					<p style="text-indent: 50px">Eminem, or Marshall Bruce Mathers III, is an American rapper, songwriter, record producer, record executive and actor. Eminem started his career in 1988, with his group New Jacks. Since then he has made a big name for himself as Eminem, which has allotted him 15 Grammy Awards, 8 American Music Awards, 17 Billboard Music Awards, an Academy Award and a MTV Europe Music Global Icon Award.</p>
+				</div>
+				<div data-role="footer" data-theme="a">
+					<h4>Chooze Your Tunez &copy; 2020</h4>
+				</div>
+			</div>
+
+			<div data-role="footer" data-theme="a">
+				<h4>Chooze Your Tunez &copy; 2020</h4>
+			</div>
+
+  </body>
+</html>

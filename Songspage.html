@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Chooze Your Tunez</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="styles/custom.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="themes/CourseProjectTheme.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.5.min.js"></script>
+  </head>
+
+  <body>
+    <div id="page" data-role="page" data-theme="c" data-add-back-btn="true">
+
+      <div data-role="panel" id="myPanel" data-theme="c">
+    		<h2>Navigation</h2>
+    		<ul data-role="listview" data-theme="b">
+    			<li class="menu"><a href="http://sotd.us/alejandraledesma-peters/MobileApplicationDevelopment/Mainpage.html">Main Page</a></li>
+          <li class="menu"><a href="http://sotd.us/alejandraledesma-peters/MobileApplicationDevelopment/Artistspage.html">Artist's Page</a></li>
+          <li class="menu"><a href="http://sotd.us/alejandraledesma-peters/MobileApplicationDevelopment/Albumspage.html">Album's Page</a></li>
+    		</ul>
+        <br>
+    		<p>You can close this panel by clicking outside of it, pressing the Esc key, or by swiping.</p>
+    	</div>
+
+      <div data-role="header" data-theme="a">
+        <div class="logo"><img src="http://static1.squarespace.com/static/556e5e1de4b040bf8bd50700/5581538de4b032e0bb307b29/55e06b24e4b0fdcdad543d65/1441494124474/?format=1500w" width="125" height="100" alt=""/> Chooze Your Tunze
+        </div>
+      </div>
+
+      <div data-role="header" data-theme="a">
+        <h1>Song's Page</h1>
+    		<a href="#myPanel" class="ui-btn ui-btn-inline">Open Menu</a>
+      </div>
+
+      <div data-role="content">
+        <center>
+          <h3>Past favorite songs from other users:</h3>
+        </center>
+
+        <div class="ui-grid-b">
+          <div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">Dianne<br>Even Angles Fall<br>32</div></div>
+          <div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">Dwight<br>Beat it<br>40</div></div>
+          <div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px">Micheal<br>Goodbye My Lover<br>43</div></div>
+          <div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">Alex<br>Glass Houses<br>16</div></div>
+          <div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">Kathy<br>Love is a Battlefield<br>46</div></div>
+          <div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px">Sunny<br>(Don't Fear) The Reaper<br>67</div></div>
+          <div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">Bob<br>Stronger<br>26</div></div>
+          <div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">Theo<br>Holy Grail<br>37</div></div>
+          <div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px">Aaron<br>No Hope in Sight<br>21</div></div>
+        </div>
+        <br><br>
+
+        <table>
+          <tr id="Name"></tr>
+          <tr id="favSong"></tr>
+          <tr id="Age"></yr>
+        </table>
+        <br><br>
+
+        <form id="myForm">
+          <label for="name">Your Name: </label>
+            <textarea id="myname" class="localstorage" placeholder="Name" autofocus></textarea>
+          <label for="favsong">Your Favorite Song: </label>
+            <textarea id="myfavsong" class="localstorage" placeholder="Favorite Song" autofocus></textarea>
+          <label for="age">Your Age: </label>
+            <textarea id="myage" class="localstorage" placeholder="Age" autofocus></textarea>
+
+          <input type="reset" value="Reset">
+          <button onclick="addFavorite();">Submit</button><br/>
+        </form>
+      </div>
+      <div data-role="footer" data-theme="a">
+        <h4>Chooze Your Tunez &copy; 2020</h4>
+      </div>
+    </div>
+
+    <script>
+    function addFavorite() {
+      var n = document.getElementById('myname').value;
+      document.getElementById('Name').innerHTML = n;
+
+      var f = document.getElementById('myfavsong').value;
+      document.getElementById('favSong').innerHTML = f;
+
+      var a = document.getElementById('myage').value;
+      document.getElementById('Age').innerHTML = a;
+    }
+
+    (function() {
+
+    	var rasm = document.getElementsByClassName('.localstorage');
+
+    	function supportsLocalStorage() {
+    		return typeof(Storage)!== 'undefined';
+    	}
+
+    	if (!supportsLocalStorage()) {
+    		rasm.value = 'Your browser does not support localStorage.';
+    	} else {
+    		try {
+    			setInterval(function() {
+    				localStorage.setItem('autosave', rasm.value);
+    			}, 1000);
+    		} catch (e) {
+    			if (e == QUOTA_EXCEEDED_ERR) {
+    				alert('Quota exceeded!');
+    			}
+    		}
+    		if (localStorage.getItem('autosave')) {
+    			rasm.value = localStorage.getItem('autosave');
+    		}
+    		document.querySelector('.clear').onclick = function() {
+    			rasm.value = '';
+    			localStorage.removeItem('autosave');
+    		};
+    	}
+        })();
+    </script>
+  </body>
+</html>

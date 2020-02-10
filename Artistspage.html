@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Chooze Your Tunez</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="styles/custom.css" rel="stylesheet" type="text/css">
+    <link href="Mainpage.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="themes/CourseProjectTheme.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.5.min.js"></script>
+  </head>
+
+  <body>
+
+    <div id="page" data-role="page" data-theme="c" data-add-back-btn="true">
+
+      <div data-role="panel" id="myPanel" data-theme="c">
+    		<h2>Navigation</h2>
+    		<ul data-role="listview" data-theme="b">
+    			<li class="menu"><a href="http://sotd.us/alejandraledesma-peters/MobileApplicationDevelopment/Mainpage.html">Main Page</a></li>
+    			<li class="menu"><a href="http://sotd.us/alejandraledesma-peters/MobileApplicationDevelopment/Songspage.html">Song's Page</a></li>
+    			<li class="menu"><a href="http://sotd.us/alejandraledesma-peters/MobileApplicationDevelopment/Albumspage.html">Album's Page</a></li>
+    		</ul>
+        <br>
+    		<p>You can close this panel by clicking outside of it, pressing the Esc key, or by swiping.</p>
+    	</div>
+
+      <div data-role="header" data-theme="a">
+        <div class="logo"><img src="http://static1.squarespace.com/static/556e5e1de4b040bf8bd50700/5581538de4b032e0bb307b29/55e06b24e4b0fdcdad543d65/1441494124474/?format=1500w" width="125" height="100" alt=""/> Chooze Your Tunze
+        </div>
+      </div>
+
+      <div data-role="header" data-theme="a">
+        <h1>Song's Page</h1>
+    		<a href="#myPanel" class="ui-btn ui-btn-inline">Open Menu</a>
+      </div>
+
+      <div data-role="content">
+        <ul data-role="listview" data-theme="b">
+          <li><a href="#form">Enter Your Favorite Artist Here</a></li>
+          <li><a href="#form2">Enter comments or notes here</a></li>
+        </ul>
+      </div>
+      <div data-role="footer" data-theme="a">
+        <h4>Chooze Your Tunez &copy; 2020</h4>
+      </div>
+    </div>
+
+    <div data-role="page" id="form" data-theme="c" data-add-back-btn="true">
+      <div data-role="header" data-theme="a" data-add-back-btn="true">
+        <h1>Form</h1>
+      </div>
+      <div data-role="content">
+        <form action="form.php" method="post">
+          <label for="fname">Your First Name: </label>
+            <input type="text" name="fname" id="fname">
+          <label for="lname">Your Last Name: </label>
+            <input type="text" name="lname" id="lname">
+          <label for="fband">Your Favorite Band: </label>
+            <input type="text" name="fband" id="fband">
+          <input type="reset" value="Reset">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      <div data-role="footer" data-theme="a">
+			  <h4>Chooze Your Tunez &copy; 2020</h4>
+			</div>
+    </div>
+
+    <div data-role="page" id="form2" data-theme="c" data-add-back-btn="true">
+      <div data-role="header" data-theme="a" data-add-back-btn="true">
+        <h1>Form 2</h1>
+      </div>
+      <div data-role="content">
+          Have any notes about songs/albums/artists you find on this site? Put them in the box below to save any notes you want!
+          </p>
+          <textarea class="localstorage" placeholder="Write any notes here, and it will be saved." autofocus></textarea>
+          <button class="clear">Clear localStorage</button>
+          <button class="empty">Empty localStorage</button>
+      </div>
+      <div data-role="footer" data-theme="a">
+        <h4>Footer</h4>
+      </div>
+    </div>
+
+    <script>
+    (function() {
+
+    	var rasm = document.querySelector('.localstorage');
+
+    	function supportsLocalStorage() {
+    		return typeof(Storage)!== 'undefined';
+    	}
+
+    	if (!supportsLocalStorage()) {
+    		rasm.value = 'Your browser does not support localStorage.';
+    	} else {
+    		try {
+    			setInterval(function() {
+    				localStorage.setItem('autosave', rasm.value);
+    			}, 1000);
+    		} catch (e) {
+    			if (e == QUOTA_EXCEEDED_ERR) {
+    				alert('Quota exceeded!');
+    			}
+    		}
+    		if (localStorage.getItem('autosave')) {
+    			rasm.value = localStorage.getItem('autosave');
+    		}
+    		document.querySelector('.clear').onclick = function() {
+    			rasm.value = '';
+    			localStorage.removeItem('autosave');
+    		};
+    		document.querySelector('.empty').onclick = function() {
+    			rasm.value = '';
+    			localStorage.clear();
+    		};
+    	}
+      })();
+      </script>
+
+  </body>
+</html>
