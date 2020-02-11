@@ -4,7 +4,7 @@
     <title>Chooze Your Tunez</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link href="styles/custom.css" rel="stylesheet" type="text/css">
-    <link href="Mainpage.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="Pages.css">
     <link rel="stylesheet" href="themes/CourseProjectTheme.min.css" />
     <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
@@ -35,92 +35,69 @@
       </div>
 
       <div data-role="header" data-theme="a">
-        <h1>Song's Page</h1>
+        <h1>Album's Page</h1>
     		<a href="#myPanel" class="ui-btn ui-btn-inline">Open Menu</a>
       </div>
 
       <div data-role="content">
-        <ul data-role="listview" data-theme="b">
-          <li><a href="#form">Enter Your Favorite Album Here</a></li>
-          <li><a href="#form2">Enter comments or notes here</a></li>
-        </ul>
+        <center>
+          <h3>Past favorite albums from other users:</h3>
+        </center>
+
+        <div class="ui-grid-b">
+          <div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">Steven<br>Dark Side of the Moon<br>54</div></div>
+          <div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">Roy<br>Sgt. Pepper's Lonely Hearts Club<br>56</div></div>
+          <div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px">Gwen<br>Thriller<br>26</div></div>
+          <div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">Sam<br>Ta13oo<br>19</div></div>
+          <div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">Sean<br>KOD<br>24</div></div>
+          <div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px">Juan<br>Ride the Lightning<br>35</div></div>
+          <div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">Lizzy<br>Kamikaze<br>25</div></div>
+          <div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">Merideth<br>Malevolence<br>38</div></div>
+          <div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px">Alec<br>Cheap Queen<br>22</div></div>
+        </div>
+          <br><br>
+
+        <div>
+          <table>
+            <tr id="N"></tr>
+            <tr id="F"></tr>
+            <tr id="A"></tr>
+          </table>
+        </div>
+          <br><br>
+
+        <form id="myForm">
+          <label for="name">Your Name: </label>
+            <input type="text" id="myname" class="localstorage" placeholder="Name" autofocus></textarea>
+          <label for="favalbum">Your Favorite Album: </label>
+            <input type="text" id="myfavalbum" class="localstorage" placeholder="Favorite Album" autofocus></textarea>
+          <label for="age">Your Age: </label>
+            <input type="text" id="myage" class="localstorage" placeholder="Age" autofocus></textarea>
+
+          <button onclick="setFavorite();">Add Favorite</button>
+          <input type="reset" value="Reset">
+        </form>
       </div>
       <div data-role="footer" data-theme="a">
         <h4>Chooze Your Tunez &copy; 2020</h4>
       </div>
     </div>
 
-    <div data-role="page" id="form" data-theme="c" data-add-back-btn="true">
-      <div data-role="header" data-theme="a" data-add-back-btn="true">
-        <h1>Form</h1>
-      </div>
-      <div data-role="content">
-        <form action="form.php" method="post">
-          <label for="fname">Your First Name: </label>
-            <input type="text" name="fname" id="fname">
-          <label for="lname">Your Last Name: </label>
-            <input type="text" name="lname" id="lname">
-          <label for="fband">Your Favorite Band: </label>
-            <input type="text" name="fband" id="fband">
-          <input type="reset" value="Reset">
-          <input type="submit" value="Submit">
-        </form>
-      </div>
-      <div data-role="footer" data-theme="a">
-			  <h4>Chooze Your Tunez &copy; 2020</h4>
-			</div>
-    </div>
-
-    <div data-role="page" id="form2" data-theme="c" data-add-back-btn="true">
-      <div data-role="header" data-theme="a" data-add-back-btn="true">
-        <h1>Form 2</h1>
-      </div>
-      <div data-role="content">
-          Have any notes about songs/albums/artists you find on this site? Put them in the box below to save any notes you want!
-          </p>
-          <textarea class="localstorage" placeholder="Write any notes here, and it will be saved." autofocus></textarea>
-          <button class="clear">Clear localStorage</button>
-          <button class="empty">Empty localStorage</button>
-      </div>
-      <div data-role="footer" data-theme="a">
-        <h4>Footer</h4>
-      </div>
-    </div>
-
     <script>
-    (function() {
+      function setFavorite() {
+        if (typeof(Storage) !-- "undefined") {
+          var inputname = document.getElementById('myname');
+            localStorage.setItem("myname", inputname.value);
+          var inputfavsong = document.getElementById('myfavalbum');
+            localStorage.setItem("myfavalbum", inputfavalbum.value);
+          var inputage = document.getElementById('myage');
+            localStorage.setItem("myage", inputage.value);
 
-    	var rasm = document.querySelector('.localstorage');
-
-    	function supportsLocalStorage() {
-    		return typeof(Storage)!== 'undefined';
-    	}
-
-    	if (!supportsLocalStorage()) {
-    		rasm.value = 'Your browser does not support localStorage.';
-    	} else {
-    		try {
-    			setInterval(function() {
-    				localStorage.setItem('autosave', rasm.value);
-    			}, 1000);
-    		} catch (e) {
-    			if (e == QUOTA_EXCEEDED_ERR) {
-    				alert('Quota exceeded!');
-    			}
-    		}
-    		if (localStorage.getItem('autosave')) {
-    			rasm.value = localStorage.getItem('autosave');
-    		}
-    		document.querySelector('.clear').onclick = function() {
-    			rasm.value = '';
-    			localStorage.removeItem('autosave');
-    		};
-    		document.querySelector('.empty').onclick = function() {
-    			rasm.value = '';
-    			localStorage.clear();
-    		};
-    	}
-      })();
-      </script>
+          document.getElementById('N').innerHTML = inputname;
+          document.getElementById('F').innerHTML = inputfavalbum;
+          document.getElementById('A').innerHTML = inputage;
+        }
+      }
+    </script>
   </body>
 </html>
