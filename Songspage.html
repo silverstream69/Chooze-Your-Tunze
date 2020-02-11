@@ -4,6 +4,7 @@
     <title>Chooze Your Tunez</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link href="styles/custom.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="Pages.css">
     <link rel="stylesheet" href="themes/CourseProjectTheme.min.css" />
     <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
@@ -53,25 +54,25 @@
           <div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">Theo<br>Holy Grail<br>37</div></div>
           <div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px">Aaron<br>No Hope in Sight<br>21</div></div>
         </div>
-        <br><br>
+          <br><br>
 
         <table>
-          <tr id="Name"></tr>
-          <tr id="favSong"></tr>
-          <tr id="Age"></yr>
+          <tr id="N"></tr>
+          <tr id="F"></tr>
+          <tr id="A"></tr>
         </table>
-        <br><br>
+          <br><br>
 
         <form id="myForm">
           <label for="name">Your Name: </label>
-            <textarea id="myname" class="localstorage" placeholder="Name" autofocus></textarea>
+            <input type="text" id="myname" class="localstorage" placeholder="Name" autofocus></textarea>
           <label for="favsong">Your Favorite Song: </label>
-            <textarea id="myfavsong" class="localstorage" placeholder="Favorite Song" autofocus></textarea>
+            <input type="text" id="myfavsong" class="localstorage" placeholder="Favorite Song" autofocus></textarea>
           <label for="age">Your Age: </label>
-            <textarea id="myage" class="localstorage" placeholder="Age" autofocus></textarea>
+            <input type="text" id="myage" class="localstorage" placeholder="Age" autofocus></textarea>
 
+          <button onclick="setFavorite();">Add Favorite</button>
           <input type="reset" value="Reset">
-          <button onclick="addFavorite();">Submit</button><br/>
         </form>
       </div>
       <div data-role="footer" data-theme="a">
@@ -80,46 +81,20 @@
     </div>
 
     <script>
-    function addFavorite() {
-      var n = document.getElementById('myname').value;
-      document.getElementById('Name').innerHTML = n;
+      function setFavorite() {
+        if (typeof(Storage) !-- "undefined") {
+          var inputname = document.getElementById('myname');
+            localStorage.setItem("myname", inputname.value);
+          var inputfavsong = document.getElementById('myfavsong');
+            localStorage.setItem("myfavsong", inputfavsong.value);
+          var inputage = document.getElementById('myage');
+            localStorage.setItem("myage", inputage.value);
 
-      var f = document.getElementById('myfavsong').value;
-      document.getElementById('favSong').innerHTML = f;
-
-      var a = document.getElementById('myage').value;
-      document.getElementById('Age').innerHTML = a;
-    }
-
-    (function() {
-
-    	var rasm = document.getElementsByClassName('.localstorage');
-
-    	function supportsLocalStorage() {
-    		return typeof(Storage)!== 'undefined';
-    	}
-
-    	if (!supportsLocalStorage()) {
-    		rasm.value = 'Your browser does not support localStorage.';
-    	} else {
-    		try {
-    			setInterval(function() {
-    				localStorage.setItem('autosave', rasm.value);
-    			}, 1000);
-    		} catch (e) {
-    			if (e == QUOTA_EXCEEDED_ERR) {
-    				alert('Quota exceeded!');
-    			}
-    		}
-    		if (localStorage.getItem('autosave')) {
-    			rasm.value = localStorage.getItem('autosave');
-    		}
-    		document.querySelector('.clear').onclick = function() {
-    			rasm.value = '';
-    			localStorage.removeItem('autosave');
-    		};
-    	}
-        })();
+          document.getElementById('N').innerHTML = inputname;
+          document.getElementById('F').innerHTML = inputfavsong;
+          document.getElementById('A').innerHTML = inputage;
+        }
+      }
     </script>
   </body>
 </html>
