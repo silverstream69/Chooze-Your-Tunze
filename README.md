@@ -1,4 +1,6 @@
 # Chooze-Your-Tunze
+This project was done in a begging course with no prior knowldge of JQuery. I will update it on a later date.
+
 This website was created for users to have a place where they can showcase, they favorite songs, artists, and albums to other people.  
 The website features four distinct pages, with may pages having additional content/functions. 
 The main page shows the top-rated songs from the website, as well as the top-rated artist and album. 
