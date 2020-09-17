@@ -1,5 +1,5 @@
 # Chooze-Your-Tunze
-This project was done in a begging course with no prior knowldge of JQuery. I will update it on a later date.
+This project was done in a beginning course with no prior knowledge of JQuery. I will update it on a later date.
 
 This website was created for users to have a place where they can showcase, they favorite songs, artists, and albums to other people.  
 The website features four distinct pages, with may pages having additional content/functions. 
